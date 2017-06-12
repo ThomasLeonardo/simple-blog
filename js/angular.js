@@ -3,7 +3,7 @@ var app = angular.module('blog', []);
 app.controller('commentController', function($scope, $http){
 	$scope.comments = [];
 
-	$http.get('http://jsonplaceholder.typicode.com/comments').then(function(response){
+	$http.get('https://jsonplaceholder.typicode.com/comments').then(function(response){
 		console.log(response);
 		$scope.comments = [];
 		response.data.forEach(function(comment){
@@ -19,9 +19,9 @@ app.controller('commentController', function($scope, $http){
 		// TODO
 	};
 });
-
+	
 app.controller('postController', function($scope, $http){
-	this.url = 'http://jsonplaceholder.typicode.com/posts';
+	this.url = 'https://jsonplaceholder.typicode.com/posts';
 	$scope.posts = [];
 
 	$http.get(this.url).then(function(response){
@@ -31,7 +31,7 @@ app.controller('postController', function($scope, $http){
 });
 
 app.controller('userController', function($scope, $http){
-	this.url = 'http://jsonplaceholder.typicode.com/users';
+	this.url = 'https://jsonplaceholder.typicode.com/users';
 	$scope.userIsLogged = false;
 	this.loggedUser = {};
 	$scope.email = "";
