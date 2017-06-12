@@ -12,11 +12,11 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 </head>
-<body>
+<body ng-controller="userController as userCtrl">
 	<div id="skipnav"><a href="#maincontent">Skip to main content</a></div>
 
     <!-- Navigation -->
-    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom" >
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header page-scroll">
@@ -33,11 +33,11 @@
                         <a href="#page-top"></a>
                     </li>
                     <li class="dropdown page-scroll">
-                    	<div id="login-form" class="dropdown">
+                    	<div id="login-form" class="dropdown" ng-hide="userIsLogged">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" id="login-button">Login</a>
 							<ul class="dropdown-menu" role="menu">
 								<li>
-									 <div class="row" ng-controller="userController as userCtrl">
+									 <div class="row">
 											<div class="col-md-12">
 												 <form name="loginForm" class="form" role="form" method="post" accept-charset="UTF-8" id="login-nav" ng-submit="loginForm.$valid && userCtrl.submitForm()"novalidate>
 														<div class="form-group">
@@ -54,6 +54,9 @@
 							</ul>
 						</div>
                     </li>
+                    <li ng-show="userIsLogged">
+                    	<a href="#" id="login-button" ng-click="userCtrl.logout()"">Logout</a>
+                    </li>
                 </ul>
             </div>
 
@@ -68,12 +71,28 @@
     <!-- Header -->
     <header>
         <div class="container" id="maincontent" tabindex="-1">
-            <div class="row">
+            <div class="row" ng-controller="commentController as commentCtrl">
                 <div class="col-lg-12" ng-controller="postController as postCtrl">
                     <div ng-repeat="post in posts" class="post">
-                		<div class="title"><strong >{{post.title}}</strong></div>
-                		<p class="postBody">{{post.body}}</p>	
-                		<div class="comments" ng-controller="commentController as commentCtrl">
+                		<div class="commentMainText">
+                			<p>{{post.username}}</p>
+                			<div class="title"><strong >{{post.title}}</strong></div>
+                			<p class="postBody">{{post.body}}</p>	
+                		</div>
+                			
+                		<div class="comments" >
+                			<p class="commentsTag">Comments:</p>
+                			<div ng-repeat="comment in comments[post.id]" class="postComment">
+                				<p>{{comment.email}} says:</p>
+                				<p>{{comment.body}}</p>
+                			</div>
+                			<div>
+                				<p class="commentsTag">Leave a Comment</p>
+								<form>
+									
+								</form>
+
+                			</div>
                 			
                 		</div>
 

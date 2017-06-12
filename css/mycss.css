@@ -16,7 +16,7 @@
 .title{
 	text-align: left;
 	color: black;
-	margin: 2%;
+
 	font-size: 1.5em;
 }
 
@@ -27,5 +27,26 @@
 
 .postBody{
 	color: rgb(82, 80, 80);
+	text-align: center;
+	text-align: left;
+}
+
+.comments{
+	background-color: rgb(186, 179, 179);
+	color: rgb(84, 80, 80);
+	text-align: left;
+}
+
+.commentMainText{
+	margin: 2%;
+}
+
+.postComment{
+	border:5px solid grey;
+	margin-bottom: 5px;
+}
+
+.commentsTag{
+	color:black;
 	text-align: center;
 }
