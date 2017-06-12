@@ -53,11 +53,8 @@
 								</li>
 							</ul>
 						</div>
-                        
                     </li>
                 </ul>
-
-                
             </div>
 
 			
@@ -72,22 +69,21 @@
     <header>
         <div class="container" id="maincontent" tabindex="-1">
             <div class="row">
-                <div class="col-lg-12">
-                    <div class="intro-text">
-                        <h1 class="name">My Simple Blog</h1>
+                <div class="col-lg-12" ng-controller="postController as postCtrl">
+                    <div ng-repeat="post in posts" class="post">
+                		<div class="title"><strong >{{post.title}}</strong></div>
+                		<p class="postBody">{{post.body}}</p>	
+                		<div class="comments" ng-controller="commentController as commentCtrl">
+                			
+                		</div>
+
+
                     </div>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Portfolio Grid Section -->
-    <section id="portfolio">
-        <div class="container">
-            
-            
-        </div>
-    </section>
 
 
     <!-- Footer -->

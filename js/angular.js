@@ -1,11 +1,18 @@
 var app = angular.module('blog', []);
 
-app.controller('commentController', function(){
+app.controller('commentController', function($scope, $http){
 
 });
 
-app.controller('postController', function(){
+app.controller('postController', function($scope, $http){
+	this.url = 'http://jsonplaceholder.typicode.com/posts';
+	$scope.posts = [];
 
+	$http.get(this.url).then(function(response){
+		$scope.posts = response.data;
+		console.log($scope.posts);
+	});
+	
 });
 
 app.controller('userController', function($scope, $http){
@@ -17,8 +24,6 @@ app.controller('userController', function($scope, $http){
 		$http.get(this.url).then(function(response){
 			console.log(response.data);
 			response.data.forEach(function(responseUser){
-				console.log(responseUser.email);
-				console.log($scope.email);
 				if($scope.email == responseUser.email){
 					this.loggedUser = responseUser;
 					this.valid = true;
